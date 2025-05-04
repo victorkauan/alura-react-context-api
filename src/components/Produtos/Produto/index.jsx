@@ -9,7 +9,7 @@ const Produto = ({
   titulo,
   descricao,
   preco,
-  adicionarProduto,
+  addProduct,
 }) => {
   return (
     <div className="col-12 col-md-6 col-xxl-4 pb-4">
@@ -25,7 +25,7 @@ const Produto = ({
             type="button"
             className="border-0"
             handleClick={() =>
-              adicionarProduto({ src, alt, id, titulo, descricao, preco })
+              addProduct({ src, alt, id, titulo, descricao, preco })
             }
           >
             Adicionar ao carrinho

@@ -4,32 +4,27 @@ import Quantidade from "@/components/Quantidade";
 import ValorFormatado from "@/components/ValorFormatado";
 import InfoItemCarrinho from "./InfoItemCarrinho";
 
-const ItemCarrinho = ({
-  itemCarrinho,
-  removerProdutoCarrinho,
-  adicionarProduto,
-  removerProduto,
-}) => {
+const ItemCarrinho = ({ shoppingCartItem }) => {
   return (
-    <li key={itemCarrinho.id}>
+    <li key={shoppingCartItem.id}>
       <>
         <div className="produto">
           <img
             className="imagem__produto"
-            src={itemCarrinho.src}
-            alt={itemCarrinho.alt}
+            src={shoppingCartItem.src}
+            alt={shoppingCartItem.alt}
           />
-          <InfoItemCarrinho itemCarrinho={itemCarrinho} />
-          <ValorFormatado valor={itemCarrinho.preco} />
+          <InfoItemCarrinho shoppingCartItem={shoppingCartItem} />
+          <ValorFormatado valor={shoppingCartItem.preco} />
           <Quantidade
-            itemCarrinho={itemCarrinho}
+            shoppingCartItem={shoppingCartItem}
             adicionarProduto={adicionarProduto}
             removerProduto={removerProduto}
           />
           <Botao
             variant="deleteItem"
             aria-label="Excluir"
-            handleClick={() => removerProdutoCarrinho(itemCarrinho.id)}
+            handleClick={() => removerProdutoCarrinho(shoppingCartItem.id)}
           >
             delete_forever
           </Botao>

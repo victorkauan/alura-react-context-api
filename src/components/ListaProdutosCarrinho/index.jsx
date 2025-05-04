@@ -3,34 +3,23 @@ import ItemCarrinhoSuspenso from "@/components/CarrinhoSuspenso/ItemCarrinhoSusp
 import ItemCarrinho from "@/components/ItemCarrinho";
 import { useLocation } from "react-router-dom";
 
-const ListaProdutosCarrinho = ({
-  carrinho,
-  adicionarProduto,
-  removerProduto,
-  removerProdutoCarrinho,
-}) => {
+const ListaProdutosCarrinho = ({ shoppingCart }) => {
   const location = useLocation();
   return (
     <ul className="list-unstyled">
-      {carrinho.length === 0 ? (
+      {shoppingCart.length === 0 ? (
         <p className="text-center my-5">Não há produtos no carrinho</p>
       ) : (
-        carrinho.map((itemCarrinho) => {
+        shoppingCart.map((shoppingCartItem) => {
           return location.pathname === "/carrinho" ? (
             <ItemCarrinho
-              key={itemCarrinho.id}
-              itemCarrinho={itemCarrinho}
-              adicionarProduto={adicionarProduto}
-              removerProduto={removerProduto}
-              removerProdutoCarrinho={removerProdutoCarrinho}
+              key={shoppingCartItem.id}
+              shoppingCartItem={shoppingCartItem}
             />
           ) : (
             <ItemCarrinhoSuspenso
-              key={itemCarrinho.id}
-              itemCarrinho={itemCarrinho}
-              adicionarProduto={adicionarProduto}
-              removerProduto={removerProduto}
-              removerProdutoCarrinho={removerProdutoCarrinho}
+              key={shoppingCartItem.id}
+              shoppingCartItem={shoppingCartItem}
             />
           );
         })

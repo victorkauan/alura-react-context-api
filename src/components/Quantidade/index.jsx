@@ -3,7 +3,7 @@ import Botao from "@/components/Botao";
 import Titulo from "@/components/Titulo";
 import { useLocation } from "react-router-dom";
 
-const Quantidade = ({ itemCarrinho, adicionarProduto, removerProduto }) => {
+const Quantidade = ({ shoppingCartItem, adicionarProduto, removerProduto }) => {
   const location = useLocation();
 
   return (
@@ -21,17 +21,17 @@ const Quantidade = ({ itemCarrinho, adicionarProduto, removerProduto }) => {
         <Botao
           variant="removeItem"
           aria-label="Remover item"
-          handleClick={() => removerProduto(itemCarrinho.id)}
+          handleClick={() => removerProduto(shoppingCartItem.id)}
         >
           -
         </Botao>
         <span className="border px-4 rounded" aria-label="Quantidade">
-          {itemCarrinho.quantidade || 0}
+          {shoppingCartItem.quantidade || 0}
         </span>
         <Botao
           variant="addItem"
           aria-label="Adicionar item"
-          handleClick={() => adicionarProduto(itemCarrinho)}
+          handleClick={() => adicionarProduto(shoppingCartItem)}
         >
           +
         </Botao>

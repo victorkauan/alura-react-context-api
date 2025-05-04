@@ -3,34 +3,29 @@ import Quantidade from "@/components/Quantidade";
 import Botao from "@/components/Botao";
 import ValorFormatado from "@/components/ValorFormatado";
 
-const ItemCarrinhoSuspenso = ({
-  itemCarrinho,
-  removerProdutoCarrinho,
-  adicionarProduto,
-  removerProduto,
-}) => {
+const ItemCarrinhoSuspenso = ({ shoppingCartItem }) => {
   return (
     <li>
       <>
         <div className="produto">
           <img
             className="imagem__produto"
-            src={itemCarrinho.src}
-            alt={itemCarrinho.alt}
+            src={shoppingCartItem.src}
+            alt={shoppingCartItem.alt}
           />
           <div className="d-flex flex-column gap-3 w-100">
-            <p className="fw-semibold fs-5 m-0">{itemCarrinho.titulo}</p>
+            <p className="fw-semibold fs-5 m-0">{shoppingCartItem.titulo}</p>
             <Quantidade
-              itemCarrinho={itemCarrinho}
+              shoppingCartItem={shoppingCartItem}
               adicionarProduto={adicionarProduto}
               removerProduto={removerProduto}
             />
-            <ValorFormatado valor={itemCarrinho.preco} />
+            <ValorFormatado valor={shoppingCartItem.preco} />
           </div>
           <Botao
             variant="deleteItem"
             aria-label="Excluir"
-            onClick={() => removerProdutoCarrinho(itemCarrinho.id)}
+            onClick={() => removerProdutoCarrinho(shoppingCartItem.id)}
           >
             delete_forever
           </Botao>
