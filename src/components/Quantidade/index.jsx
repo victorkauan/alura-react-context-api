@@ -2,8 +2,10 @@ import React from "react";
 import Botao from "@/components/Botao";
 import Titulo from "@/components/Titulo";
 import { useLocation } from "react-router-dom";
+import { useShoppingCartContext } from "@/hooks/useShoppingCart"
 
-const Quantidade = ({ shoppingCartItem, adicionarProduto, removerProduto }) => {
+const Quantidade = ({ shoppingCartItem }) => {
+  const { addProduct, removeProduct } = useShoppingCartContext()
   const location = useLocation();
 
   return (
@@ -21,7 +23,7 @@ const Quantidade = ({ shoppingCartItem, adicionarProduto, removerProduto }) => {
         <Botao
           variant="removeItem"
           aria-label="Remover item"
-          handleClick={() => removerProduto(shoppingCartItem.id)}
+          handleClick={() => removeProduct(shoppingCartItem.id)}
         >
           -
         </Botao>
@@ -31,7 +33,7 @@ const Quantidade = ({ shoppingCartItem, adicionarProduto, removerProduto }) => {
         <Botao
           variant="addItem"
           aria-label="Adicionar item"
-          handleClick={() => adicionarProduto(shoppingCartItem)}
+          handleClick={() => addProduct(shoppingCartItem)}
         >
           +
         </Botao>

@@ -16,11 +16,7 @@ const ItemCarrinho = ({ shoppingCartItem }) => {
           />
           <InfoItemCarrinho shoppingCartItem={shoppingCartItem} />
           <ValorFormatado valor={shoppingCartItem.preco} />
-          <Quantidade
-            shoppingCartItem={shoppingCartItem}
-            adicionarProduto={adicionarProduto}
-            removerProduto={removerProduto}
-          />
+          <Quantidade shoppingCartItem={shoppingCartItem} />
           <Botao
             variant="deleteItem"
             aria-label="Excluir"
