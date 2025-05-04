@@ -26,7 +26,7 @@ export const useShoppingCartContext = () => {
     setShoppingCart([...updatedShoppingCart])
   }
 
-  function removeProduct(id) {
+  function subtractProduct(id) {
     const productToRemove = shoppingCart.find(product => product.id === id)
     const isLastUnit = productToRemove.quantidade === 1
 
@@ -42,6 +42,6 @@ export const useShoppingCartContext = () => {
     shoppingCart,
     setShoppingCart,
     addProduct,
-    removeProduct
+    subtractProduct
   }
 }

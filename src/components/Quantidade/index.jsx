@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useShoppingCartContext } from "@/hooks/useShoppingCart"
 
 const Quantidade = ({ shoppingCartItem }) => {
-  const { addProduct, removeProduct } = useShoppingCartContext()
+  const { addProduct, subtractProduct } = useShoppingCartContext()
   const location = useLocation();
 
   return (
@@ -23,7 +23,7 @@ const Quantidade = ({ shoppingCartItem }) => {
         <Botao
           variant="removeItem"
           aria-label="Remover item"
-          handleClick={() => removeProduct(shoppingCartItem.id)}
+          handleClick={() => subtractProduct(shoppingCartItem.id)}
         >
           -
         </Botao>
