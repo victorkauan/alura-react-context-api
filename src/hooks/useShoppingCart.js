@@ -38,10 +38,16 @@ export const useShoppingCartContext = () => {
     setShoppingCart([...updatedShoppingCart])
   }
 
+  function removeProduct(id) {
+    const filteredShoppingCart = shoppingCart.filter(product => product.id !== id)
+    setShoppingCart(filteredShoppingCart)
+  }
+
   return {
     shoppingCart,
     setShoppingCart,
     addProduct,
-    subtractProduct
+    subtractProduct,
+    removeProduct
   }
 }
