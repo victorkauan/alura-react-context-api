@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useMemo } from "react"
 import { ShoppingCartContext } from "@/contexts/ShoppingCartContext"
 
 export const useShoppingCartContext = () => {
@@ -50,18 +50,21 @@ export const useShoppingCartContext = () => {
     setShoppingCart(filteredShoppingCart)
   }
 
-  useEffect(() => {
-    const { temporaryTotalValue, temporaryQuantity } = shoppingCart.reduce(
+  const { temporaryTotalValue, temporaryQuantity } = useMemo(
+    () => shoppingCart.reduce(
       (accumulator, shoppingCartItem) => ({
         temporaryTotalValue: accumulator.temporaryTotalValue + shoppingCartItem.price * shoppingCartItem.quantity,
         temporaryQuantity: accumulator.temporaryQuantity + shoppingCartItem.quantity
       }),
       { temporaryTotalValue: 0, temporaryQuantity: 0 }
-    )
+    ),
+    [shoppingCart]
+  )
 
+  useEffect(() => {
     setTotalValue(temporaryTotalValue)
     setQuantity(temporaryQuantity)
-  }, [shoppingCart])
+  })
 
   return {
     shoppingCart,
