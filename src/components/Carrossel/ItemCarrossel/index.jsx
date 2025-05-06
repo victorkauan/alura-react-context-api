@@ -1,23 +1,23 @@
 import Titulo from "@/components/Titulo";
 
-const ItemCarrossel = ({ src, alt, itemCarrossel }) => {
+const ItemCarrossel = ({ src, alt, carouselItem }) => {
   return (
     <div
-      className={`image-height carousel-item ${itemCarrossel ? "" : "active"}`}
+      className={`image-height carousel-item ${carouselItem ? "" : "active"}`}
     >
       <img
         className={`w-100 img-fluid cover-image ${
-          itemCarrossel ? "cover-center" : "cover-left"
+          carouselItem ? "cover-center" : "cover-left"
         }`}
         src={src}
         alt={alt}
       />
-      {itemCarrossel && (
+      {carouselItem && (
         <div className="carousel-caption">
           <Titulo element="h5" className="fs-1">
-            {itemCarrossel.titulo}
+            {carouselItem.title}
           </Titulo>
-          <p className="fs-4">{itemCarrossel.subtitulo}</p>
+          <p className="fs-4">{carouselItem.subtitle}</p>
         </div>
       )}
     </div>

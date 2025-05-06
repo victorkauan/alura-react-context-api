@@ -17,7 +17,7 @@ const ItemCarrinho = ({ shoppingCartItem }) => {
             alt={shoppingCartItem.alt}
           />
           <InfoItemCarrinho shoppingCartItem={shoppingCartItem} />
-          <ValorFormatado valor={shoppingCartItem.preco} />
+          <ValorFormatado value={shoppingCartItem.price} />
           <Quantidade shoppingCartItem={shoppingCartItem} />
           <Botao
             variant="deleteItem"

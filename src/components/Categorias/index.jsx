@@ -13,7 +13,7 @@ const Categorias = () => {
             key={categoria.id}
             alt={categoria.alt}
             src={categoria.src}
-            descricao={categoria.descricao}
+            description={categoria.description}
           />
         ))}
       </div>

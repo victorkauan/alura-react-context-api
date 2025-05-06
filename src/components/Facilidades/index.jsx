@@ -13,9 +13,7 @@ const Facilidades = () => {
         Conheça todas as nossas facilidades
       </Titulo>
       <div className="d-flex flex-column flex-lg-row align-items-center justify-content-center gap-3 px-3  pt-3 pb-3">
-        {facilidades.map((facilidade) => {
-          return <Facilidade key={facilidade.id} {...facilidade} />;
-        })}
+        {facilidades.map((facilidade) => <Facilidade key={facilidade.id} {...facilidade} />)}
       </div>
     </section>
   );

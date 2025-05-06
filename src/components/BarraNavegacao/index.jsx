@@ -23,7 +23,7 @@ const BarraNavegacao = () => {
             <BotaoTogglerMenu />
             <BotaoCarrinho
               className={`d-md-none ${ehAPaginaCarrinho && "d-none"}`}
-              quantidadeProdutos={quantity}
+              quantity={quantity}
             />
           </div>
           <div className="collapse navbar-collapse" id="conteudoBarraNavegacao">
@@ -41,7 +41,7 @@ const BarraNavegacao = () => {
               className={`d-none d-md-block ${
                 ehAPaginaCarrinho && "d-md-none"
               }`}
-              quantidadeProdutos={quantity}
+              quantity={quantity}
             />
           </div>
         </div>

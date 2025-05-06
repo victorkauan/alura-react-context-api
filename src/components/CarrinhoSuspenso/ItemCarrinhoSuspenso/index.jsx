@@ -16,9 +16,9 @@ const ItemCarrinhoSuspenso = ({ shoppingCartItem }) => {
             alt={shoppingCartItem.alt}
           />
           <div className="d-flex flex-column gap-3 w-100">
-            <p className="fw-semibold fs-5 m-0">{shoppingCartItem.titulo}</p>
+            <p className="fw-semibold fs-5 m-0">{shoppingCartItem.title}</p>
             <Quantidade shoppingCartItem={shoppingCartItem} />
-            <ValorFormatado valor={shoppingCartItem.preco} />
+            <ValorFormatado value={shoppingCartItem.price} />
           </div>
           <Botao
             variant="deleteItem"

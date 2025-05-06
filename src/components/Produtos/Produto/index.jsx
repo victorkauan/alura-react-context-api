@@ -5,9 +5,9 @@ const Produto = ({
   src,
   id,
   alt,
-  titulo,
-  descricao,
-  preco,
+  title,
+  description,
+  price,
   addProduct,
 }) => {
   return (
@@ -15,16 +15,16 @@ const Produto = ({
       <div className="card">
         <img className="img-fluid" src={src} alt={alt} />
         <div className="card-body">
-          <h5 className="card-title fw-bold">{titulo}</h5>
-          <p className="card-text">{descricao}</p>
-          <p className="fw-bold">{formatadorMoeda(preco)}</p>
+          <h5 className="card-title fw-bold">{title}</h5>
+          <p className="card-text">{description}</p>
+          <p className="fw-bold">{formatadorMoeda(price)}</p>
 
           <Botao
             variant="primary"
             type="button"
             className="border-0"
             handleClick={() =>
-              addProduct({ src, alt, id, titulo, descricao, preco })
+              addProduct({ src, alt, id, title, description, price })
             }
           >
             Adicionar ao carrinho

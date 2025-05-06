@@ -4,8 +4,11 @@ import Titulo from "@/components/Titulo";
 import Sumario from "@/components/Sumario";
 import ListaProdutosCarrinho from "@/components/ListaProdutosCarrinho";
 import BannerCarrinho from "@/components/BannerCarrinho";
+import { useShoppingCartContext } from "@/hooks/useShoppingCart"
 
 const Carrinho = () => {
+  const { shoppingCart, totalValue, quantity } = useShoppingCartContext()
+
   return (
     <>
       <BarraNavegacao />
@@ -20,12 +23,9 @@ const Carrinho = () => {
               <Titulo className="text-center fw-bold mb-3 text-md-start">
                 Detalhes da compra
               </Titulo>
-              <ListaProdutosCarrinho />
+              <ListaProdutosCarrinho shoppingCart={shoppingCart} />
             </div>
-            {/* <Sumario
-                  valorTotalCarrinho={valorTotalCarrinho}
-                  quantidadeProdutos={quantidadeProdutos}
-            /> */}
+            <Sumario totalValue={totalValue} quantity={quantity} />
           </div>
         </section>
       </main>

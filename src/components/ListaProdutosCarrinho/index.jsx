@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const ListaProdutosCarrinho = ({ shoppingCart }) => {
   const location = useLocation();
+
   return (
     <ul className="list-unstyled">
       {shoppingCart.length === 0 ? (

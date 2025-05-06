@@ -14,7 +14,7 @@ export const useShoppingCartContext = () => {
   function getUpdatedShoppingCart(id, quantity) {
     return shoppingCart.map(product => {
       if (product.id === id) {
-        product.quantidade += quantity
+        product.quantity += quantity
       }
 
       return product
@@ -25,7 +25,7 @@ export const useShoppingCartContext = () => {
     const hasProduct = shoppingCart.some((product) => product.id === newProduct.id)
 
     if (!hasProduct) {
-      newProduct.quantidade = 1
+      newProduct.quantity = 1
       return setShoppingCart(previous => [...previous, newProduct])
     }
 
@@ -35,7 +35,7 @@ export const useShoppingCartContext = () => {
 
   function subtractProduct(id) {
     const productToRemove = shoppingCart.find(product => product.id === id)
-    const isLastUnit = productToRemove.quantidade === 1
+    const isLastUnit = productToRemove.quantity === 1
 
     if (isLastUnit) {
       return setShoppingCart(previous => previous.filter(product => product.id !== id))
@@ -53,8 +53,8 @@ export const useShoppingCartContext = () => {
   useEffect(() => {
     const { temporaryTotalValue, temporaryQuantity } = shoppingCart.reduce(
       (accumulator, shoppingCartItem) => ({
-        temporaryTotalValue: accumulator.temporaryTotalValue + shoppingCartItem.preco * shoppingCartItem.quantidade,
-        temporaryQuantity: accumulator.temporaryQuantity + shoppingCartItem.quantidade
+        temporaryTotalValue: accumulator.temporaryTotalValue + shoppingCartItem.price * shoppingCartItem.quantity,
+        temporaryQuantity: accumulator.temporaryQuantity + shoppingCartItem.quantity
       }),
       { temporaryTotalValue: 0, temporaryQuantity: 0 }
     )

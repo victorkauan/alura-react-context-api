@@ -27,7 +27,7 @@ const Quantidade = ({ shoppingCartItem }) => {
           -
         </Botao>
         <span className="border px-4 rounded" aria-label="Quantidade">
-          {shoppingCartItem.quantidade || 0}
+          {shoppingCartItem.quantity || 0}
         </span>
         <Botao
           variant="addItem"

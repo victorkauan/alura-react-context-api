@@ -31,7 +31,7 @@ const CarrinhoSuspenso = () => {
       </div>
       <div className="offcanvas-body">
         <ListaProdutosCarrinho shoppingCart={shoppingCart} />
-        <TotalCarrinho valorTotalCarrinho={totalValue} />
+        <TotalCarrinho totalValue={totalValue} />
       </div>
     </div>
   );

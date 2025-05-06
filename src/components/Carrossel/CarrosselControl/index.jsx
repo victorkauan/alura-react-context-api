@@ -1,17 +1,17 @@
-const CarrosselControl = ({ variante }) => {
+const CarrosselControl = ({ variant }) => {
   return (
     <button
-      className={`carousel-control-${variante}`}
+      className={`carousel-control-${variant}`}
       type="button"
       data-bs-target="#carrossel"
-      data-bs-slide={variante}
+      data-bs-slide={variant}
     >
       <span
-        className={`carousel-control-${variante}-icon`}
+        className={`carousel-control-${variant}-icon`}
         aria-hidden="true"
       ></span>
       <span className="visually-hidden">
-        {variante === "prev" ? "Anterior" : "Próximo"}
+        {variant === "prev" ? "Anterior" : "Próximo"}
       </span>
     </button>
   );

@@ -14,12 +14,12 @@ const Carrossel = () => {
               key={slide.id}
               src={slide.src}
               alt={slide.alt}
-              itemCarrossel={slide.itemCarrossel}
+              carouselItem={slide.itemCarrossel}
             />
           ))}
         </div>
-        <CarrosselControl variante="prev" />
-        <CarrosselControl variante="next" />
+        <CarrosselControl variant="prev" />
+        <CarrosselControl variant="next" />
       </div>
     </section>
   );
