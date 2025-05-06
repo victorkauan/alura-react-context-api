@@ -1,5 +1,3 @@
-import React from "react";
-
 const IndicadoresCarrossel = () => {
   return (
     <div className="carousel-indicators">

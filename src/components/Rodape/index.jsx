@@ -1,5 +1,3 @@
-import React from "react";
-
 const Rodape = () => {
   return (
     <footer className="text-center bg-black text-bg-dark">

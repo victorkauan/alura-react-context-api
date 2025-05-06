@@ -1,5 +1,3 @@
-import React from "react";
-
 const Categoria = ({ alt, src, descricao }) => {
   return (
     <div className="col-6 col-md-4 col-xxl-2">

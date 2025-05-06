@@ -1,5 +1,3 @@
-import React from "react";
-
 const Facilidade = ({ src, alt, titulo, descricao }) => {
   return (
     <div className="divs-facilidades d-flex">
