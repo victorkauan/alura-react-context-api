@@ -1,74 +1,55 @@
-import { useContext, useEffect, useMemo } from "react"
+import { useContext } from "react"
 import { ShoppingCartContext } from "@/contexts/ShoppingCartContext"
+import {
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  UPDATE_QUANTITY
+} from "@/reducers/shoppingCartReducer"
+
+const addProductAction = (newProduct) => ({
+  type: ADD_PRODUCT,
+  payload: newProduct
+})
+
+const removeProductAction = (productId) => ({
+  type: REMOVE_PRODUCT,
+  payload: productId
+})
+
+const updateQuantityAction = (productId, quantity) => ({
+  type: UPDATE_QUANTITY,
+  payload: { productId, quantity }
+})
 
 export const useShoppingCartContext = () => {
   const {
     shoppingCart,
-    setShoppingCart,
+    dispatchShoppingCart,
     quantity,
-    setQuantity,
-    totalValue,
-    setTotalValue
+    totalValue
   } = useContext(ShoppingCartContext)
 
-  function getUpdatedShoppingCart(id, quantity) {
-    return shoppingCart.map(product => {
-      if (product.id === id) {
-        product.quantity += quantity
-      }
-
-      return product
-    })
-  }
-
   function addProduct(newProduct) {
-    const hasProduct = shoppingCart.some((product) => product.id === newProduct.id)
-
-    if (!hasProduct) {
-      newProduct.quantity = 1
-      return setShoppingCart(previous => [...previous, newProduct])
-    }
-
-    const updatedShoppingCart = getUpdatedShoppingCart(newProduct.id, 1)
-    setShoppingCart([...updatedShoppingCart])
+    dispatchShoppingCart(addProductAction(newProduct))
   }
 
   function subtractProduct(id) {
-    const productToRemove = shoppingCart.find(product => product.id === id)
-    const isLastUnit = productToRemove.quantity === 1
+    const productToSubtract = shoppingCart.find(product => product.id === id)
 
-    if (isLastUnit) {
-      return setShoppingCart(previous => previous.filter(product => product.id !== id))
+    if (productToSubtract && productToSubtract.quantity > 1) {
+      dispatchShoppingCart(updateQuantityAction(id, -1))
+      return
     }
 
-    const updatedShoppingCart = getUpdatedShoppingCart(id, -1)
-    setShoppingCart([...updatedShoppingCart])
+    dispatchShoppingCart(removeProductAction(id))
   }
 
   function removeProduct(id) {
-    const filteredShoppingCart = shoppingCart.filter(product => product.id !== id)
-    setShoppingCart(filteredShoppingCart)
+    dispatchShoppingCart(removeProductAction(id))
   }
-
-  const { temporaryTotalValue, temporaryQuantity } = useMemo(
-    () => shoppingCart.reduce(
-      (accumulator, shoppingCartItem) => ({
-        temporaryTotalValue: accumulator.temporaryTotalValue + shoppingCartItem.price * shoppingCartItem.quantity,
-        temporaryQuantity: accumulator.temporaryQuantity + shoppingCartItem.quantity
-      }),
-      { temporaryTotalValue: 0, temporaryQuantity: 0 }
-    ),
-    [shoppingCart]
-  )
-
-  useEffect(() => {
-    setTotalValue(temporaryTotalValue)
-    setQuantity(temporaryQuantity)
-  })
 
   return {
     shoppingCart,
-    setShoppingCart,
     addProduct,
     subtractProduct,
     removeProduct,
