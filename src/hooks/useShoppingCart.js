@@ -1,8 +1,15 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { ShoppingCartContext } from "@/contexts/ShoppingCartContext"
 
 export const useShoppingCartContext = () => {
-  const { shoppingCart, setShoppingCart } = useContext(ShoppingCartContext)
+  const {
+    shoppingCart,
+    setShoppingCart,
+    quantity,
+    setQuantity,
+    totalValue,
+    setTotalValue
+  } = useContext(ShoppingCartContext)
 
   function getUpdatedShoppingCart(id, quantity) {
     return shoppingCart.map(product => {
@@ -43,11 +50,26 @@ export const useShoppingCartContext = () => {
     setShoppingCart(filteredShoppingCart)
   }
 
+  useEffect(() => {
+    const { temporaryTotalValue, temporaryQuantity } = shoppingCart.reduce(
+      (accumulator, shoppingCartItem) => ({
+        temporaryTotalValue: accumulator.temporaryTotalValue + shoppingCartItem.preco * shoppingCartItem.quantidade,
+        temporaryQuantity: accumulator.temporaryQuantity + shoppingCartItem.quantidade
+      }),
+      { temporaryTotalValue: 0, temporaryQuantity: 0 }
+    )
+
+    setTotalValue(temporaryTotalValue)
+    setQuantity(temporaryQuantity)
+  }, [shoppingCart])
+
   return {
     shoppingCart,
     setShoppingCart,
     addProduct,
     subtractProduct,
-    removeProduct
+    removeProduct,
+    totalValue,
+    quantity
   }
 }
